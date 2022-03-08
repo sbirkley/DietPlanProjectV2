@@ -20,15 +20,13 @@ namespace dietProjV2
             calories = aCalories;
             protein = aProtein;
         }
-
-        public DietObj(string aName, int aCalories, int aProtein, string aContents) 
+        public DietObj(string aName, int aCalories, int aProtein, string aContents)
         {
             name = aName;
             calories = aCalories;
             protein = aProtein;
             contents = aContents;
         }
-
         public DietObj()
         { 
         
@@ -63,7 +61,7 @@ namespace dietProjV2
             Menu goBack = new Menu();
             goBack.ReturnToMain();
 
-            /*DietObj sportShake = new DietObj("Sport Shake", 200, 30);
+           /*DietObj sportShake = new DietObj("Sport Shake", 200, 30);
            DietObj standShake = new DietObj("Standard Shake", 150, 20);
            DietObj mealBar = new DietObj("Meal Bar", 350, 10);
            DietObj snackBar = new DietObj("Snack Bar", 150, 10);

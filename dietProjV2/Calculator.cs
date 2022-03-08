@@ -36,32 +36,31 @@ namespace dietProjV2
             WriteLine("  1) Sedentary\n  2) Lightly Active\n  3) Moderately Active\n  4) Very Active");
             activityLevel = Convert.ToInt32(ReadLine());
 
-            if (activityLevel == 1)
+            switch (activityLevel)
             {
-                activityLevel = 1.2;
+                case 1:
+                    activityLevel = 1.2;
+                    WriteLine(activityLevel);
+                    break;
+                case 2:
+                    activityLevel = 1.375;
+                    WriteLine(activityLevel);
+                    break;
+                case 3:
+                    activityLevel = 1.55;
+                    WriteLine(activityLevel);
+                    break;
+                case 4:
+                    activityLevel = 1.725;
+                    WriteLine(activityLevel);
+                    break;
+                default:
+                    WriteLine("Please enter a valid response.\n\nPress any key to return . . .");
+                    ReadKey(true);
+                    RunCalc();
+                    break;
             }
 
-            else if (activityLevel == 2)
-            {
-                activityLevel = 1.375;
-            }
-
-            else if (activityLevel == 3)
-            {
-                activityLevel = 1.55;
-            }
-
-            else if (activityLevel == 4)
-            {
-                activityLevel = 1.725;
-            }
-            else
-            {
-                WriteLine("Please enter a valid response.");
-                WriteLine("\nPress any key to return . . . ");
-                ReadKey(true);
-                RunCalc();
-            }
             WriteLine("\nDo you identify as Male or Female? (Select 'M' or 'F') ");
             gender = ReadLine();
             
@@ -71,19 +70,13 @@ namespace dietProjV2
                     double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age) - 161;
                     double result = basalMetRate * activityLevel;
                     energyExpenditure = result;
-                   // WriteLine($"Your TDEE is {energyExpenditure}.");
-                
             }
-
             else if (gender.Trim().ToLower() == "m")
             {
                 double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age);
                 double result = basalMetRate * activityLevel;
                 energyExpenditure = result;
-
-                //WriteLine($"Your TDEE is {energyExpenditure}.");
             }
-
             else
             {
                 WriteLine("Please enter a valid response.");

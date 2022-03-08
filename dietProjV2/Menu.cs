@@ -23,30 +23,27 @@ namespace dietProjV2
             WriteLine("   4) Exit");
             int answer = Convert.ToInt32(ReadLine());
 
-            if(answer == 1)
+            switch (answer)
             {
-                Calculator calc = new Calculator();
-                calc.RunCalc();
+                case 1:
+                    Calculator calc = new Calculator();
+                    calc.RunCalc();
+                    break;
+                case 2:
+                    DietObj plans = new DietObj();
+                    plans.DisplayPlans();
+                    break;
+                case 3:
+                    DietObj flav = new DietObj();
+                    flav.DisplayFlavors();
+                    break;
+                case 4:
+                    WriteLine("Thank you for stopping by! \nPress any key to exit . . . ");
+                    break;
+                default:
+                    WriteLine("Please enter a valid response.");
+                    break;
             }
-            else if(answer == 2)
-            {
-                DietObj plans = new DietObj();
-                plans.DisplayPlans();
-            }
-            else if(answer == 3)
-            {
-                DietObj flav = new DietObj();
-                flav.DisplayFlavors();
-            }
-            else if(answer == 4)
-            {
-                WriteLine("Thank you for stopping by! \nPress any key to exit . . . ");
-            }
-            else
-            {
-                WriteLine("Please enter a valid response.");
-            }
-
         }
         public void ReturnToMain()
         {
