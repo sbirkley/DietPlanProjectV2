@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
+
 namespace dietProjV2
 {
     class Calculator
     {
         public int age;
-        public int weight;
+        public double weight;
         public double height;
-        public char gender;
+        public string gender;
         public double activityLevel;
         public double energyExpenditure;
         public double calTarget;
@@ -23,13 +24,15 @@ namespace dietProjV2
             WriteLine("What is your age? ");
             age = Convert.ToInt32(ReadLine());
 
-            WriteLine("What is your weight? (kg) ");
-            weight = Convert.ToInt32(ReadLine());
-
-            WriteLine("What is your height (cm)? ");
+            WriteLine("\nWhat is your weight? (lbs) ");
+            weight = Convert.ToDouble(ReadLine());
+            weight = weight * 0.454;
+            
+            WriteLine("\nWhat is your height (in)? ");
             height = Convert.ToDouble(ReadLine());
+            height = height * 2.54;
 
-            WriteLine("What is your activity level?");
+            WriteLine("\nWhat is your activity level?");
             WriteLine("  1) Sedentary\n  2) Lightly Active\n  3) Moderately Active\n  4) Very Active");
             activityLevel = Convert.ToInt32(ReadLine());
 
@@ -55,15 +58,15 @@ namespace dietProjV2
             else
             {
                 WriteLine("Please enter a valid response.");
-                WriteLine("Press any key to return . . . ");
+                WriteLine("\nPress any key to return . . . ");
                 ReadKey(true);
                 RunCalc();
             }
-            WriteLine("Do you identify as Male or Female? (Select 'M' or 'F') ");
-            gender = Convert.ToChar(ReadLine());
-            //To Lower or To Upper
+            WriteLine("\nDo you identify as Male or Female? (Select 'M' or 'F') ");
+            gender = ReadLine();
+            
 
-            if (gender == 'f')
+            if (gender.Trim().ToLower() == "f")
             { 
                     double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age) - 161;
                     double result = basalMetRate * activityLevel;
@@ -72,7 +75,7 @@ namespace dietProjV2
                 
             }
 
-            else if (gender == 'm')
+            else if (gender.Trim().ToLower() == "m")
             {
                 double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age);
                 double result = basalMetRate * activityLevel;
@@ -89,13 +92,14 @@ namespace dietProjV2
                 RunCalc();
             }
 
-            WriteLine("\nWhy do you want to try BRANDNAME?");
+            WriteLine("\n\nWhy do you want to try BRANDNAME?");
             WriteLine("\n  1) I want to lose weight.\n  2) I want to reset.\n  3) I'm too busy to sit down and eat.");
             int reply = Convert.ToInt32(ReadLine());
 
             if (reply == 1)
             {
                 calTarget = ((energyExpenditure) - 300);
+                calTarget = Math.Round(calTarget);
 
                 if (calTarget < 1200)
                 {
@@ -112,6 +116,7 @@ namespace dietProjV2
             else if (reply == 2 || reply == 3) 
             {
                 calTarget = energyExpenditure;
+                calTarget = Math.Round(calTarget);
                 if (calTarget < 1200)
                 {
                     Clear();
@@ -137,11 +142,10 @@ namespace dietProjV2
                 WriteLine("\nWe think your best match is our Lightyear Plan.");
                 DietObj lightYearPlan = new DietObj();
                 lightYearPlan.Pick("Lightyear Plan", 1250, 105);
-                WriteLine("\n\nPress any key to return to the main menu . . . ");
-                ReadKey(true);
-                Menu goToMain = new Menu();
-                goToMain.RunMenu();
-                
+               
+                Menu goBack = new Menu();
+                goBack.ReturnToMain();
+
             }
 
             else if (calTarget > 1599 && calTarget <= 1799)
@@ -149,11 +153,9 @@ namespace dietProjV2
                 WriteLine("\nWe think your best match is our Nebula Plan.");
                 DietObj nebulaPlan = new DietObj();
                 nebulaPlan.Pick("Nebula Plan", 1600, 115);
-                WriteLine("\n\nPress any key to return to the main menu . . . ");
-                ReadKey(true);
-                Menu goToMain = new Menu();
-                goToMain.RunMenu();
 
+                Menu goBack = new Menu();
+                goBack.ReturnToMain();
             }
 
             else if (calTarget > 1799 && calTarget <= 1999)
@@ -161,10 +163,9 @@ namespace dietProjV2
                 WriteLine("\nWe think your best match is our Supernova Plan.");
                 DietObj supernovaPlan = new DietObj();
                 supernovaPlan.Pick("Supernova Plan", 1800, 145);
-                WriteLine("\n\nPress any key to return to the main menu . . . ");
-                ReadKey(true);
-                Menu goToMain = new Menu();
-                goToMain.RunMenu();
+
+                Menu goBack = new Menu();
+                goBack.ReturnToMain();
 
             }
             else
@@ -172,11 +173,9 @@ namespace dietProjV2
                 WriteLine("\nWe think your best match is our Helios Plan.");
                 DietObj heliosPlan = new DietObj();
                 heliosPlan.Pick("Helios Plan", 2200, 155);
-                WriteLine("\n\nPress any key to return to the main menu . . . ");
-                ReadKey(true);
-                Menu goToMain = new Menu();
-                goToMain.RunMenu();
 
+                Menu goBack = new Menu();
+                goBack.ReturnToMain();
             }
                  
              

@@ -12,8 +12,10 @@ namespace dietProjV2
         public void RunMenu()
         {
             Clear();
+            ForegroundColor = ConsoleColor.Cyan;
             WriteLine("At BRANDNAME, we are committed to delivering optimal nutrition: ");
             WriteLine("Whether you are here to lose weight, reset, or fuel up, we have you covered!");
+            ForegroundColor = ConsoleColor.DarkCyan;
             WriteLine("\nWhat would you like to do?");
             WriteLine("   1) Find my meal plan match");
             WriteLine("   2) Explore all plans");
@@ -44,6 +46,14 @@ namespace dietProjV2
             {
                 WriteLine("Please enter a valid response.");
             }
+
+        }
+        public void ReturnToMain()
+        {
+            WriteLine("\n\nPress any key to return to the main menu . . . ");
+            ReadKey(true);
+            Menu goToMain = new Menu();
+            goToMain.RunMenu();
         }
     }
 }
