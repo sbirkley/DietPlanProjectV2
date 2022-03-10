@@ -17,13 +17,18 @@ namespace dietProjV2
         public double activityLevel;
         public double energyExpenditure;
         public double calTarget;
+        public double weightKg;
+        public double heightCm;
 
-        /*double goalWeight;
+        string goalQuestion;
+
+        double goalWeight;
         double calPlan;
         double deficit;
         double daysToOneLb;
         double lbsToLose;
-        double daysToGoal;*/
+        double daysToGoal;
+
         public void RunCalc()
         {
             Clear();
@@ -32,11 +37,11 @@ namespace dietProjV2
 
             WriteLine("\nWhat is your weight? (lbs) ");
             weight = Convert.ToDouble(ReadLine());
-            weight = weight * 0.454;
+            weightKg = weight * 0.454;
             
             WriteLine("\nWhat is your height (in)? ");
             height = Convert.ToDouble(ReadLine());
-            height = height * 2.54;
+            heightCm = height * 2.54;
 
             WriteLine("\nWhat is your activity level?");
             WriteLine("  1) Sedentary\n  2) Lightly Active\n  3) Moderately Active\n  4) Very Active");
@@ -100,7 +105,6 @@ namespace dietProjV2
                 calTarget = ((energyExpenditure) - 300);
                 calTarget = Math.Round(calTarget);
                 
-
                 if (calTarget < 1200)
                 {
                     Clear();
@@ -136,61 +140,70 @@ namespace dietProjV2
                 ReadKey(true);
                 RunCalc();
             }
-
             if (calTarget <= 1599)
             {
-                WriteLine("\nWe think your best match is our Lightyear Plan.");
-                DietObj lightYearPlan = new DietObj();
-                lightYearPlan.Pick("Lightyear Plan", 1250, 105);
+                WriteLine("\nWe think your best match is our Lightyear Plan.\n\n");
+                DietObj lightYearPlan = new DietObj("Lightyear Plan", 1250, 105);
+                Menu goToMain = new Menu();
+                goToMain.ReturnToMain();
+
+                if (reply == 1)
+                {
+                    WriteLine("\n\nDo you want to see how long it will take to acheive your goal weight? (Y/N) ");
+                    goalQuestion = ReadLine();
+
+                    if (goalQuestion.Trim().ToLower() == "y")
+                        WeightTimeCalc();
+                    else
+                    WriteLine("\n\nPress any key to return to the main menu . . . ");
+                    ReadKey(true);
+                    Menu goToMain2 = new Menu();
+                    goToMain2.RunMenu();
+                }
             }
 
             else if (calTarget > 1599 && calTarget <= 1799)
             {
-                WriteLine("\nWe think your best match is our Nebula Plan.");
-                DietObj nebulaPlan = new DietObj();
-                nebulaPlan.Pick("Nebula Plan", 1600, 115);
+                WriteLine("\nWe think your best match is our Nebula Plan.\n\n");
+                DietObj nebulaPlan = new DietObj("Nebula Plan", 1600, 115);
+                Menu goToMain2 = new Menu();
+                goToMain2.ReturnToMain();
             }
 
             else if (calTarget > 1799 && calTarget <= 1999)
             {
-                WriteLine("\nWe think your best match is our Supernova Plan.");
-                DietObj supernovaPlan = new DietObj();
-                supernovaPlan.Pick("Supernova Plan", 1800, 145);
+                WriteLine("\nWe think your best match is our Supernova Plan.\n\n");
+                DietObj supernovaPlan = new DietObj("Supernova Plan", 1800, 145);
+                Menu goToMain2 = new Menu();
+                goToMain2.ReturnToMain();
             }
             else
             {
-                WriteLine("\nWe think your best match is our Helios Plan.");
-                DietObj heliosPlan = new DietObj();
-                heliosPlan.Pick("Helios Plan", 2200, 155);
+                WriteLine("\nWe think your best match is our Helios Plan.\n\n");
+                DietObj heliosPlan = new DietObj("Helios Plan", 2200, 155);
+                Menu goToMain2 = new Menu();
+                goToMain2.ReturnToMain();
             }
-
-            //if (reply == 1)
-            //{
-            //    WeightTimeCalc();
-            //}
-
-            Menu goBack = new Menu();
-            goBack.ReturnToMain();
-                 
-             
         }
-        /*public void WeightTimeCalc()
+        public void WeightTimeCalc()
         {
             Clear();
-            WriteLine("What is your goal weight? ");
-            goalWeight = Convert.ToDouble(ReadKey());
-            WriteLine("\nHow many calories do you plan to eat each day?" );
-            calPlan = Convert.ToDouble(ReadKey());
+            WriteLine("\n\nWhat is your goal weight? ");
+            goalWeight = Convert.ToDouble(ReadLine());
+            WriteLine("\nHow many calories do you plan to eat each day?");
+            calPlan = Convert.ToDouble(ReadLine());
             deficit = energyExpenditure - calPlan;
 
             daysToOneLb = 3500 / deficit;
             lbsToLose = weight - goalWeight;
             daysToGoal = lbsToLose * daysToOneLb;
-            daysToGoal = Math.Round(daysToGoal);
 
-            WriteLine($"With a deficit of {deficit}, we project that it will take you approximately {daysToGoal} days to reach your goal.");
+            ForegroundColor = ConsoleColor.Yellow;
+            WriteLine($"\n\nWith a caloric deficit of {Math.Round(deficit)}, we project that it will take you approximately {Math.Round(daysToGoal)} days to reach your goal.");
+            ForegroundColor = ConsoleColor.DarkCyan;
+            WriteLine("\n\nPress any key to return to the main menu . . . ");
 
-        }*/
+        }
 
     }
 

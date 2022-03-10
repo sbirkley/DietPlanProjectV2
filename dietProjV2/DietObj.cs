@@ -19,6 +19,8 @@ namespace dietProjV2
             name = aName;
             calories = aCalories;
             protein = aProtein;
+
+            WriteLine($"\nThe {name} plan has {protein} grams of protein and {calories} calories.");
         }
         public DietObj(string aName, int aCalories, int aProtein, string aContents)
         {
@@ -26,22 +28,26 @@ namespace dietProjV2
             calories = aCalories;
             protein = aProtein;
             contents = aContents;
+            WriteLine($"\n\nThe {name} plan has {protein} grams of protein and {calories} calories to keep you going strong!");
+            WriteLine($"The {name} plan includes the following: \n{contents}");
         }
         public DietObj()
         { 
         
         }
 
-        public void Pick(string aName, int aCalories, int aProtein )
+        /*public void Pick(string aName, int aCalories, int aProtein )
         {
             WriteLine($"{name} has {calories} calories and {protein} grams of protein.");
-        }
+        }*/
 
-        public void PickPlan()
-        {
-            WriteLine($"The {name} plan has a total of {calories} calories and {protein} grams of protein to keep you powered up!\n");
-            WriteLine($"The {name} plan includes the following: \n{contents}");
-        }
+        //public void PickPlan(aName, aCalories, aProtein)
+            //name = aName;
+            
+       // {
+          // WriteLine($"The {name} plan has a total of {calories} calories and {protein} grams of protein to keep you powered up!\n");
+           // WriteLine($"The {name} plan includes the following: \n{contents}");
+       // }
 
         public void DisplayFlavors()
         {
@@ -57,6 +63,11 @@ namespace dietProjV2
         {
             Clear();
             WriteLine("We have a daily meal plan suited for just about everyone! Check out our offerings below!");
+
+            DietObj lightyearPlan = new DietObj("Lightyear Plan", 1250, 105, "\n > 1 Sport Shake\n > 2 Standard Shakes\n > 1 Meal Bar\n > 2 Snack Bars\n > 1 Protein Pudding ");
+            DietObj nebulaPlan = new DietObj("Nebula Plan", 1600, 115, "\n > 1 Sport Shake\n > 2 Standard Shakes\n > 2 Meal Bars\n > 2 Snack Bars\n > 1 Protein Pudding");
+            DietObj supernovaPlan = new DietObj("Supernova Plan", 1800, 145, "\n > 2 Sport Shakes\n > 2 Standard Shakes\n > 2 Meal Bars\n > 2 Snack Bars\n > 1 Protein Pudding");
+            DietObj heliosPlan = new DietObj("Helios Plan", 2200, 155, "\n > 3 Sport Shakes\n > 3 Meal Bars\n > 3 Snack Bars\n > 1 Protein Pudding");
 
             Menu goBack = new Menu();
             goBack.ReturnToMain();
