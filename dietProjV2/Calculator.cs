@@ -18,6 +18,12 @@ namespace dietProjV2
         public double energyExpenditure;
         public double calTarget;
 
+        /*double goalWeight;
+        double calPlan;
+        double deficit;
+        double daysToOneLb;
+        double lbsToLose;
+        double daysToGoal;*/
         public void RunCalc()
         {
             Clear();
@@ -73,7 +79,7 @@ namespace dietProjV2
             }
             else if (gender.Trim().ToLower() == "m")
             {
-                double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age);
+                double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age) + 5;
                 double result = basalMetRate * activityLevel;
                 energyExpenditure = result;
             }
@@ -93,6 +99,7 @@ namespace dietProjV2
             {
                 calTarget = ((energyExpenditure) - 300);
                 calTarget = Math.Round(calTarget);
+                
 
                 if (calTarget < 1200)
                 {
@@ -135,10 +142,6 @@ namespace dietProjV2
                 WriteLine("\nWe think your best match is our Lightyear Plan.");
                 DietObj lightYearPlan = new DietObj();
                 lightYearPlan.Pick("Lightyear Plan", 1250, 105);
-               
-                Menu goBack = new Menu();
-                goBack.ReturnToMain();
-
             }
 
             else if (calTarget > 1599 && calTarget <= 1799)
@@ -146,9 +149,6 @@ namespace dietProjV2
                 WriteLine("\nWe think your best match is our Nebula Plan.");
                 DietObj nebulaPlan = new DietObj();
                 nebulaPlan.Pick("Nebula Plan", 1600, 115);
-
-                Menu goBack = new Menu();
-                goBack.ReturnToMain();
             }
 
             else if (calTarget > 1799 && calTarget <= 1999)
@@ -156,24 +156,41 @@ namespace dietProjV2
                 WriteLine("\nWe think your best match is our Supernova Plan.");
                 DietObj supernovaPlan = new DietObj();
                 supernovaPlan.Pick("Supernova Plan", 1800, 145);
-
-                Menu goBack = new Menu();
-                goBack.ReturnToMain();
-
             }
             else
             {
                 WriteLine("\nWe think your best match is our Helios Plan.");
                 DietObj heliosPlan = new DietObj();
                 heliosPlan.Pick("Helios Plan", 2200, 155);
-
-                Menu goBack = new Menu();
-                goBack.ReturnToMain();
             }
+
+            //if (reply == 1)
+            //{
+            //    WeightTimeCalc();
+            //}
+
+            Menu goBack = new Menu();
+            goBack.ReturnToMain();
                  
              
         }
-       
+        /*public void WeightTimeCalc()
+        {
+            Clear();
+            WriteLine("What is your goal weight? ");
+            goalWeight = Convert.ToDouble(ReadKey());
+            WriteLine("\nHow many calories do you plan to eat each day?" );
+            calPlan = Convert.ToDouble(ReadKey());
+            deficit = energyExpenditure - calPlan;
+
+            daysToOneLb = 3500 / deficit;
+            lbsToLose = weight - goalWeight;
+            daysToGoal = lbsToLose * daysToOneLb;
+            daysToGoal = Math.Round(daysToGoal);
+
+            WriteLine($"With a deficit of {deficit}, we project that it will take you approximately {daysToGoal} days to reach your goal.");
+
+        }*/
 
     }
 
