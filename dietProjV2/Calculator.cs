@@ -21,7 +21,6 @@ namespace dietProjV2
         public double heightCm;
 
         string goalQuestion;
-
         double goalWeight;
         double calPlan;
         double deficit;
@@ -51,19 +50,15 @@ namespace dietProjV2
             {
                 case 1:
                     activityLevel = 1.2;
-                    WriteLine(activityLevel);
                     break;
                 case 2:
                     activityLevel = 1.375;
-                    WriteLine(activityLevel);
                     break;
                 case 3:
                     activityLevel = 1.55;
-                    WriteLine(activityLevel);
                     break;
                 case 4:
                     activityLevel = 1.725;
-                    WriteLine(activityLevel);
                     break;
                 default:
                     WriteLine("Please enter a valid response.\n\nPress any key to return . . .");
@@ -97,7 +92,7 @@ namespace dietProjV2
             }
 
             WriteLine("\n\nWhy do you want to try BRANDNAME?");
-            WriteLine("\n  1) I want to lose weight.\n  2) I want to reset.\n  3) I'm too busy to sit down and eat.");
+            WriteLine("\n  1) I want to lose weight.\n  2) I want to maintain my current weight.\n  3) I'm too busy to sit down and eat.");
             int reply = Convert.ToInt32(ReadLine());
 
             if (reply == 1)
@@ -140,49 +135,48 @@ namespace dietProjV2
                 ReadKey(true);
                 RunCalc();
             }
+
             if (calTarget <= 1599)
             {
                 WriteLine("\nWe think your best match is our Lightyear Plan.\n\n");
                 DietObj lightYearPlan = new DietObj("Lightyear Plan", 1250, 105);
-                Menu goToMain = new Menu();
-                goToMain.ReturnToMain();
-
-                if (reply == 1)
-                {
-                    WriteLine("\n\nDo you want to see how long it will take to acheive your goal weight? (Y/N) ");
-                    goalQuestion = ReadLine();
-
-                    if (goalQuestion.Trim().ToLower() == "y")
-                        WeightTimeCalc();
-                    else
-                    WriteLine("\n\nPress any key to return to the main menu . . . ");
-                    ReadKey(true);
-                    Menu goToMain2 = new Menu();
-                    goToMain2.RunMenu();
-                }
             }
 
             else if (calTarget > 1599 && calTarget <= 1799)
             {
                 WriteLine("\nWe think your best match is our Nebula Plan.\n\n");
                 DietObj nebulaPlan = new DietObj("Nebula Plan", 1600, 115);
-                Menu goToMain2 = new Menu();
-                goToMain2.ReturnToMain();
             }
 
             else if (calTarget > 1799 && calTarget <= 1999)
             {
                 WriteLine("\nWe think your best match is our Supernova Plan.\n\n");
                 DietObj supernovaPlan = new DietObj("Supernova Plan", 1800, 145);
-                Menu goToMain2 = new Menu();
-                goToMain2.ReturnToMain();
             }
             else
             {
                 WriteLine("\nWe think your best match is our Helios Plan.\n\n");
                 DietObj heliosPlan = new DietObj("Helios Plan", 2200, 155);
-                Menu goToMain2 = new Menu();
-                goToMain2.ReturnToMain();
+            }
+
+            if (reply == 1)
+            {
+                WriteLine("\n\nDo you want to see how long it will take to achieve your goal weight? (Y/N) ");
+                goalQuestion = ReadLine();
+
+                if (goalQuestion.Trim().ToLower() == "y")
+                    WeightTimeCalc();
+                else
+                {
+                    Menu main3 = new Menu();
+                    main3.ReturnToMain();
+                }
+                    
+            }
+            else 
+            {
+                Menu main3 = new Menu();
+                main3.ReturnToMain();
             }
         }
         public void WeightTimeCalc()
@@ -201,7 +195,8 @@ namespace dietProjV2
             ForegroundColor = ConsoleColor.Yellow;
             WriteLine($"\n\nWith a caloric deficit of {Math.Round(deficit)}, we project that it will take you approximately {Math.Round(daysToGoal)} days to reach your goal.");
             ForegroundColor = ConsoleColor.DarkCyan;
-            WriteLine("\n\nPress any key to return to the main menu . . . ");
+            Menu main3 = new Menu();
+            main3.ReturnToMain();
 
         }
 

@@ -13,14 +13,17 @@ namespace dietProjV2
             ReadLine();
 
             /*
-             
-               -- Fix values not flooding over from Pick()
                -- Consense all of the if/else if stuff to switch where possible
                -- Format everything to make it look ~pretty~
                -- Create a menu where user can scroll/select answer w/ arrow keys instead of entering answer if time allows.
                -- Git commits
                -- Unit converter  --> does what I have work?
-               -- Countdown to new flavor release clock
+               -- Round days on release date clock
+               -- Add some pauses
+               -- Turn WeightTimeCalc into subclass of Calculator?
+
+
+                CURRENTLY I HAVE: Unit converter (check if meets reqs), days remaining calculator, master loop
                */
 
         }
