@@ -73,9 +73,9 @@ namespace dietProjV2
 
             if (gender.Trim().ToLower() == "f")
             { 
-                    double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age) - 161;
-                    double result = basalMetRate * activityLevel;
-                    energyExpenditure = result;
+                double basalMetRate = (10 * weight) + (6.26 * height) - (5 * age) - 161;
+                double result = basalMetRate * activityLevel;
+                energyExpenditure = result;
             }
             else if (gender.Trim().ToLower() == "m")
             {
@@ -188,9 +188,7 @@ namespace dietProjV2
             calPlan = Convert.ToDouble(ReadLine());
             deficit = energyExpenditure - calPlan;
 
-            daysToOneLb = 3500 / deficit;
-            lbsToLose = weight - goalWeight;
-            daysToGoal = lbsToLose * daysToOneLb;
+            var daysToGoal = GetDays(deficit, weight, goalWeight);
 
             ForegroundColor = ConsoleColor.Yellow;
             WriteLine($"\n\nWith a caloric deficit of {Math.Round(deficit)}, we project that it will take you approximately {Math.Round(daysToGoal)} days to reach your goal.");
@@ -200,6 +198,14 @@ namespace dietProjV2
 
         }
 
+        public double GetDays(double deficit, double weight, double goalWeight)
+        {
+            var daysToOneLb = 3500 / deficit;
+            var lbsToLose = weight - goalWeight;
+            var daysToGoal = lbsToLose * daysToOneLb;
+
+            return daysToGoal;
+        }
     }
 
 }

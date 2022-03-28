@@ -9,8 +9,9 @@ namespace dietProjV2
 {
     class Menu
     {
-        public void RunMenu()
+        public bool RunMenu()
         {
+            bool exitLoop = false;
             Clear();
             ForegroundColor = ConsoleColor.Cyan;
             WriteLine("At BRANDNAME, we are committed to delivering optimal nutrition: ");
@@ -39,18 +40,26 @@ namespace dietProjV2
                     break;
                 case 4:
                     WriteLine("Thank you for stopping by! \nPress any key to exit . . . ");
+                    exitLoop = true;    
                     break;
                 default:
                     WriteLine("Please enter a valid response.");
                     break;
             }
+            if (answer != 4)
+            {
+                WriteLine("\n\nPress any key to return to the main menu . . . ");
+                ReadKey(true);
+                Menu goToMain = new Menu();
+            }
+            return exitLoop;
         }
         public void ReturnToMain()
         {
-            WriteLine("\n\nPress any key to return to the main menu . . . ");
+            /*WriteLine("\n\nPress any key to return to the main menu . . . ");
             ReadKey(true);
             Menu goToMain = new Menu();
-            goToMain.RunMenu();
+            goToMain.RunMenu();*/
         }
     }
 }
