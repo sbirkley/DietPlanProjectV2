@@ -13,6 +13,15 @@ namespace dietProjV2
         {
             bool exitLoop = false;
             Clear();
+            WriteLine(@"
+  ____                      _ _   _                      
+ |  _ \                    | | \ | |                     
+ | |_) |_ __ __ _ _ __   __| |  \| | __ _ _ __ ___   ___ 
+ |  _ <| '__/ _` | '_ \ / _` | . ` |/ _` | '_ ` _ \ / _ \
+ | |_) | | | (_| | | | | (_| | |\  | (_| | | | | | |  __/
+ |____/|_|  \__,_|_| |_|\__,_|_| \_|\__,_|_| |_| |_|\___|
+                                                                                  
+");
             ForegroundColor = ConsoleColor.Cyan;
             WriteLine("At BRANDNAME, we are committed to delivering optimal nutrition: ");
             WriteLine("Whether you are here to lose weight, reset, or fuel up, we have you covered!");
