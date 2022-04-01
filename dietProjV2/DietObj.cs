@@ -28,8 +28,11 @@ namespace dietProjV2
             calories = aCalories;
             protein = aProtein;
             contents = aContents;
+            ForegroundColor = ConsoleColor.Cyan;
             WriteLine($"\n\nThe {name} plan has {protein} grams of protein and {calories} calories to keep you going strong!");
-            WriteLine($"The {name} plan includes the following: \n{contents}");
+            WriteLine($"The {name} plan includes the following:");
+            ResetColor();
+            WriteLine(contents);
         }
         public DietObj()
         { 
@@ -70,7 +73,9 @@ namespace dietProjV2
             Menu goBack = new Menu();
             goBack.ReturnToMain();
 
-           /*DietObj sportShake = new DietObj("Sport Shake", 200, 30);
+           /*
+           >> Individual item values for future reference:
+           DietObj sportShake = new DietObj("Sport Shake", 200, 30);
            DietObj standShake = new DietObj("Standard Shake", 150, 20);
            DietObj mealBar = new DietObj("Meal Bar", 350, 10);
            DietObj snackBar = new DietObj("Snack Bar", 150, 10);
