@@ -11,7 +11,7 @@ At this time, we are primarily targeting individuals with lower TDEEs who may ha
 
   Use our tools below to start your BRANDNAME journey.
 
---- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** ---
+--- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** --- *** ---
 
 
   This console app features an interactive menu with options to view plans, view flavors, and to get matched with a diet plan based upon user input.
