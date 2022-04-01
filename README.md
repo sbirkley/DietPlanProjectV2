@@ -23,6 +23,8 @@ This is typically considered the minimum amount of calories a person should have
 
 ** (Also note that I do not recommend this kind of diet-- I kept it simple for the purposes of this project. If I were to expand upon this in the future I would add more whole food
  options and would use the brand's pre-packaged items in addition to certain outside foods the user can freely eat that would be outlined in some kind of list.) **
+ 
+ Font used is "Big" by Glenn Chappell, 4/93.
 
 
 --- *** --- My 3 chosen features: --- *** ---
